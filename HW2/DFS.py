@@ -19,10 +19,14 @@ class Node:
         self.error;
         self.lastgear = gear;
         self.gears = [];
+        self.gear_values= [];
 
 
     def append_gear(self):
         self.gears.append(self.lastgear)
+
+    def append_gear_value(self):
+        self.gear_values.append(self.lastgear.num_of_teeth)
 
 
 
@@ -90,6 +94,7 @@ class DFS:
             gear = Gear(value);
             node = Node(gear);
             node.append_gear();
+            node.append_gear_value()
             self.s.push(node);
 
 
@@ -101,16 +106,17 @@ class DFS:
         return isOptimum;
 
 
-
-
-
-
-
-
     def create_children(self,parent):
 
 
 
+
+    def find_compatible(self, Node):
+        remaining_gear_values = [x for x in self.gear_values if x not in Node.lastgear.num_of_teeth];
+        compatible_values = [];
+        for value in remaining_gear_values:
+            if abs(value - Node.lastgear.num_of_teeth) <= 30:
+                compatible_values.append(value)
 
 
 class BFS:
