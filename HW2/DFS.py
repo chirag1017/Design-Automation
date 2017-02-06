@@ -13,12 +13,16 @@ cond = 'true'
 
 
 class Node:
-    def __init__(self,gears,wout):
-        self.gears=gears
+    def __init__(self,gear):
         self.wout=wout
         self.GearBox;
         self.error;
+        self.lastgear = gear;
+        self.gears = [];
 
+
+    def append_gear(self):
+        self.gears.append(self.lastgear)
 
 
 
@@ -59,12 +63,48 @@ class Stack:
 
 class DFS:
 
-    w_in = 100;
-    gears = [11, 23, 31, 47, 59, 71, 83, 97, 109, 127]
-    w_out = [-117, 77, 377, -20, -2345, 2]
-    s = Stack()
+    def __init__(self, w_in, w_out, gear_values):
+        self.w_in = w_in;
+        self.w_out = w_out;
+        self.gear_values = gear_values;
+        self.s;
 
-    
+
+    def search(self):
+        self.initialize()
+
+        isOptimum = False;
+        while (self.s.size() != 0) and ~isOptimum:
+            node = self.s.pop();
+            isOptimum = self.evaluation(node);
+
+
+
+
+
+
+
+    def initialize(self):
+        self.s = Stack();
+        for value in self.gear_values:
+            gear = Gear(value);
+            node = Node(gear);
+            node.append_gear();
+            self.s.push(node);
+
+
+
+    def evaluation(self, Node):
+        isOptimum = False;
+        if Node.error <= 2.5:
+            isOptimum = True;
+        return isOptimum;
+
+
+
+
+
+
 
 
     def create_children(self,parent):
@@ -84,5 +124,25 @@ class UCS:
 
 class A_star:
     def __init__(self):
+       '''TO DO'''
 
-        '''TO DO'''
+
+
+
+def Main():
+
+    w_in = 100;
+    gear_values = [11, 23, 31, 47, 59, 71, 83, 97, 109, 127];
+    w_out = [-117, 77, 377, -20, -2345, 2]
+
+    Search_method = DFS(w_in, w_out, gear_values);
+
+
+
+
+
+
+
+
+
+Main();
