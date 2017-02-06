@@ -15,9 +15,9 @@ cond = 'true'
 class Node:
     def __init__(self,gear):
         self.wout=wout
-        self.GearBox;
-        self.error;
-        self.lastgear = gear;
+        self.GearBox
+        self.error
+        self.lastgear = gear
         self.gears = [];
         self.gear_values= [];
 
@@ -29,10 +29,17 @@ class Node:
         self.gear_values.append(self.lastgear.num_of_teeth)
 
 
+    def eval_wc(self,gear):
+        wc = gears
+
+
+    def eval_error(self,wout,win,wc):
+        self.error= abs(self.wout - self.eval_wc())/abs(self.wout-self.)
 
 
 
 
+    def position_of_wc(self):
 
 class Gear:
     def __init__(self, num_of_teeth, shaft):
@@ -42,7 +49,7 @@ class Gear:
 class Gearbox:
     def __init__(self):
         self.gearlist = [];
-        self.w_c;
+        self.wc;
 
 
 class Stack:
@@ -67,9 +74,9 @@ class Stack:
 
 class DFS:
 
-    def __init__(self, w_in, w_out, gear_values):
-        self.w_in = w_in;
-        self.w_out = w_out;
+    def __init__(self, win, wout, gear_values):
+        self.win = win;
+        self.wout = wout;
         self.gear_values = gear_values;
         self.s;
 
@@ -111,6 +118,9 @@ class DFS:
 
 
 
+
+
+
     def find_compatible(self, Node):
         remaining_gear_values = [x for x in self.gear_values if x not in Node.lastgear.num_of_teeth];
         compatible_values = [];
@@ -119,7 +129,7 @@ class DFS:
                 compatible_values.append(value)
 
 
-class BFS:
+'''class BFS:
 
     def __init__(self):
         '''TO DO'''
@@ -133,7 +143,7 @@ class A_star:
        '''TO DO'''
 
 
-
+'''
 
 def Main():
 
